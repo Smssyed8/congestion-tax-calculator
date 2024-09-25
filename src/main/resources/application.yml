@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: congestion-tax-calculator
+  profiles:
+    active: dev
+  config:
+    import:
+      - "classpath:congestion-config.yml"
+  cache:
+    type: simple
+
+  messages:
+    basename: messages
+    encoding: UTF-8
+    fallback-to-system-locale: false
+
+logging:
+  level:
+    root: DEBUG
+    com.syed.assignment: DEBUG
+
+metrics:
+  enable:
+    all: true
+  endpoint:
+    health:
+      show-details: always
+    info:
+      enabled: true

@@ -1,0 +1,78 @@
+congestion-tax:
+  maxFeePerDay: 60
+  allowYear: 2013
+  defaultCity: gothenburg
+  cities:
+    gothenburg: gothenburgStrategy
+  fee-slots:
+    gothenburg:
+      - startTime: "06:00"
+        endTime: "06:29"
+        fee: 8
+      - startTime: "06:30"
+        endTime: "06:59"
+        fee: 13
+      - startTime: "07:00"
+        endTime: "07:59"
+        fee: 18
+      - startTime: "08:00"
+        endTime: "08:29"
+        fee: 13
+      - startTime: "08:30"
+        endTime: "14:59"
+        fee: 8
+      - startTime: "15:00"
+        endTime: "15:29"
+        fee: 13
+      - startTime: "15:30"
+        endTime: "16:59"
+        fee: 18
+      - startTime: "17:00"
+        endTime: "17:59"
+        fee: 13
+      - startTime: "18:00"
+        endTime: "18:29"
+        fee: 8
+      - startTime: "18:30"
+        endTime: "05:59"
+        fee: 0
+  exempt-dates:
+    - year: 2013
+      month: 1
+      days: [1]
+    - year: 2013
+      month: 3
+      days: [28, 29]
+    - year: 2013
+      month: 4
+      days: [1, 30]
+    - year: 2013
+      month: 5
+      days: [1, 8, 9]
+    - year: 2013
+      month: 6
+      days: [5, 6, 21]
+    - year: 2013
+      month: 7
+      days: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+    - year: 2013
+      month: 11
+      days: [1]
+    - year: 2013
+      month: 12
+      days: [24, 25, 26, 31]
+  exempt-vehicles:
+    - vehicleType: "Car"
+      isExempt: false
+    - vehicleType: "Motorbike"
+      isExempt: true
+    - vehicleType: "Bus"
+      isExempt: true
+    - vehicleType: "Emergency"
+      isExempt: true
+    - vehicleType: "Diplomat"
+      isExempt: true
+    - vehicleType: "Foreign"
+      isExempt: true
+    - vehicleType: "Military"
+      isExempt: true

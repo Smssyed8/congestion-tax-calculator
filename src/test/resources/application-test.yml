@@ -1,0 +1,10 @@
+spring:
+  config:
+    import:
+      - "classpath:congestion-config.yml"
+  management:
+    metrics:
+      export:
+        simple:
+          enabled: false
+      enabled: false
