@@ -1,7 +1,9 @@
 package com.syed.assignment.congestion_tax_calculator.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
@@ -15,13 +17,17 @@ import java.util.List;
  */
 public record CongestionFeeRequest(
         @NotNull(message = "City cannot be null")
+        @NotBlank(message = "City cannot be empty")
         String city,
 
         @NotNull(message = "Vehicle type cannot be null")
+        @NotBlank(message = "Vehicle type cannot be empty")
         String vehicleType,
 
         @NotNull(message = "Timestamps cannot be null")
         @Size(min = 1, message = "At least one timestamp must be provided")
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-        List<LocalDateTime> timeStamps
-) {}
+        List<@PastOrPresent LocalDateTime> timeStamps
+) {
+
+}
