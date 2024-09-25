@@ -36,6 +36,7 @@ This is a Spring Boot 3 application for calculating congestion taxes based on ci
 ## **API Details**
 
 **URL:** `http://localhost:8080/v1/congestion-fee/calculate`
+**SWAGGER:** `http://localhost:8080/swagger-ui/index.html`
 
 **Sample POST Request:**
 ```json
@@ -43,8 +44,8 @@ This is a Spring Boot 3 application for calculating congestion taxes based on ci
     "city": "gothenburg",
     "vehicleType": "car",
     "timeStamps": [
-        "2013-09-23T06:23:00",
-        "2013-09-23T07:00:00"
+       "2013-09-23 06:23:00",
+       "2013-09-23 07:00:00"
     ]
 }
 ```
