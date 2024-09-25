@@ -7,7 +7,5 @@ import java.time.LocalTime;
  */
 public interface FeeSlotService {
 
-    boolean isCityConfigured(String city);
-
     int getFeeForTime(LocalTime time, String city);
 }

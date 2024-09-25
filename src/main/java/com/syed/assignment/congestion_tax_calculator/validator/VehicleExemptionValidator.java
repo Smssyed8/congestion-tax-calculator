@@ -22,7 +22,7 @@ public class VehicleExemptionValidator extends ValidationHandler {
 
     @Override
     public boolean doValidate(CongestionFeeRequest request) {
-        return !isVehicleExempt(request.vehicleType());
+        return !isVehicleExempt(request.city(), request.vehicleType());
     }
 
     /**
@@ -31,8 +31,9 @@ public class VehicleExemptionValidator extends ValidationHandler {
      * @param vehicleType
      * @return
      */
-    private boolean isVehicleExempt(String vehicleType) {
-        return congestionTaxConfig.getExemptVehicles().stream()
+    private boolean isVehicleExempt(String city, String vehicleType) {
+        return congestionTaxConfig.getCityConfig(city)
+                .getExemptVehicles().stream()
                 .anyMatch(vehicle -> vehicle.vehicleType().equalsIgnoreCase(vehicleType) && vehicle.isExempt());
     }
 }

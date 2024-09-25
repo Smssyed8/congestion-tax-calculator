@@ -75,7 +75,7 @@ public class ValidationServiceImpl implements ValidationService {
      * @param request the congestion fee request
      */
     private void validateCity(CongestionFeeRequest request) {
-        if (!feeSlotService.isCityConfigured(request.city())) {
+        if (!congestionTaxConfig.getCities().containsKey(request.city())) {
             throw new CityNotConfiguredException(request.city());
         }
     }

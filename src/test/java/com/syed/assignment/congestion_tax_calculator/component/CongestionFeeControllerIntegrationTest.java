@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @TestExecutionListeners(listeners = {DependencyInjectionTestExecutionListener.class})
 @ActiveProfiles("test")
-@TestPropertySource(locations = "classpath:congestion-config.yml")
+@TestPropertySource(locations = {"classpath:congestion-config.yml", "classpath:gothenburg-config.yml"})
 @ImportAutoConfiguration(exclude = {
         SecurityAutoConfiguration.class,
         SecurityFilterAutoConfiguration.class,
