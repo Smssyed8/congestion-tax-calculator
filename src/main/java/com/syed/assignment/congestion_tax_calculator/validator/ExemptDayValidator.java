@@ -17,7 +17,7 @@ public class ExemptDayValidator extends ValidationHandler {
 
     @Override
     public boolean doValidate(CongestionFeeRequest request) {
-        return request.timeStamps().stream().noneMatch(this::isExemptDay);
+        return request.timeStamps().stream().noneMatch(date -> isExemptDay(date, request.city()));
     }
 
     /**
@@ -25,8 +25,8 @@ public class ExemptDayValidator extends ValidationHandler {
      * @param date
      * @return
      */
-    public boolean isExemptDay(LocalDateTime date){
-        return congestionTaxConfig.getExemptDates().stream().anyMatch(exemptDay ->
+    public boolean isExemptDay(LocalDateTime date, String city) {
+        return congestionTaxConfig.getCityConfig(city).getExemptDates().stream().anyMatch(exemptDay ->
                 exemptDay.year() == date.getYear() &&
                 exemptDay.month() == date.getMonthValue() &&
                         exemptDay.days().contains(date.getDayOfMonth())

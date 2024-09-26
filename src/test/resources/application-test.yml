@@ -2,6 +2,7 @@ spring:
   config:
     import:
       - "classpath:congestion-config.yml"
+      - "classpath:gothenburg-config.yml"
   management:
     metrics:
       export:

@@ -6,6 +6,7 @@ spring:
   config:
     import:
       - "classpath:congestion-config.yml"
+      - "classpath:gothenburg-config.yml"
   cache:
     type: simple
 

@@ -7,8 +7,6 @@ import com.syed.assignment.congestion_tax_calculator.service.FeeSlotService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -17,22 +15,12 @@ import java.util.Optional;
 @Service
 public class FeeSlotServiceImpl implements FeeSlotService {
 
-    private final Map<String, List<CongestionFeeSlot>> feeSlotsByCity;
+    private final CongestionTaxConfig config;
 
     // Inject CongestionTaxConfig that holds the feeSlots
     public FeeSlotServiceImpl(CongestionTaxConfig config) {
         // Initialize the feeSlots from the configuration
-        this.feeSlotsByCity = config.getFeeSlots();
-    }
-
-    /**
-     * method to check if the city is configured or not
-     * @param city
-     * @return
-     */
-    @Override
-    public boolean isCityConfigured(String city) {
-        return feeSlotsByCity.containsKey(city.toLowerCase());
+        this.config = config;
     }
 
     /**
@@ -43,7 +31,7 @@ public class FeeSlotServiceImpl implements FeeSlotService {
      */
     @Override
     public int getFeeForTime(LocalTime time, String city) {
-        return Optional.ofNullable(feeSlotsByCity.get(city.toLowerCase()))
+        return Optional.ofNullable(config.getCityConfig(city.toLowerCase()).getFeeSlots())
             .orElseThrow(() -> new CityNotConfiguredException(city)).stream()
             .filter(slot -> isWithinTime(slot, time))
             .findFirst()
